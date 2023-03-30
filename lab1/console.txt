@@ -1,0 +1,486 @@
+
+R version 4.2.3 (2023-03-15 ucrt) -- "Shortstop Beagle"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> a <- 2 * log(5)
+> b <- 3 * a
+> min(a,b)
+[1] 3.218876
+> a <- seq(25, 45)
+> mediana <- median(a)
+> rm(b)
+> apropos("median")
+[1] "median"         "median.default" "mediana"       
+> setwd("D://")
+> a <- "macbooki Apple"
+> write(a, "plik_zmiennej_a.txt")
+> rm(a)
+> a
+Error: object 'a' not found
+> a <- readLines("plik_zmiennej_a.txt")
+> a
+[1] "macbooki Apple"
+> setwd("D://R")
+> install.packages("gridExtra")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+ パッケージを ‘C:/Users/pepsi/AppData/Local/R/win-library/4.2’ 中にインストールします 
+ (‘lib’ が指定されていないため) 
+ 依存対象 (dependency) ‘cli’, ‘glue’, ‘lifecycle’, ‘rlang’, ‘gtable’ もインストールします 
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/cli_3.6.1.zip'
+Content type 'application/zip' length 1331511 bytes (1.3 MB)
+downloaded 1.3 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/glue_1.6.2.zip'
+Content type 'application/zip' length 162453 bytes (158 KB)
+downloaded 158 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/lifecycle_1.0.3.zip'
+Content type 'application/zip' length 139160 bytes (135 KB)
+downloaded 135 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/rlang_1.1.0.zip'
+Content type 'application/zip' length 1575313 bytes (1.5 MB)
+downloaded 1.5 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/gtable_0.3.3.zip'
+Content type 'application/zip' length 225826 bytes (220 KB)
+downloaded 220 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/gridExtra_2.3.zip'
+Content type 'application/zip' length 1109541 bytes (1.1 MB)
+downloaded 1.1 MB
+
+ パッケージ ‘cli’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘glue’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘lifecycle’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘rlang’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘gtable’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘gridExtra’ は無事に展開され、MD5 サムもチェックされました 
+
+ ダウンロードされたパッケージは、以下にあります 
+ 	C:\Users\pepsi\AppData\Local\Temp\RtmpsZObPT\downloaded_packages 
+> library(gridExtra)
+> tab <- tableGrob(head(Orange, 10))
+> grid.arrange(tab)
+> vec1 <- seq(200, 130, by = -5)
+> View(tab)
+Error in names[[i]] : subscript out of bounds
+> a <- 19:5
+> b <- 11:23
+> d <- c(b, a)
+> d
+ [1] 11 12 13 14 15 16 17 18 19 20 21 22 23 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5
+> nazwa <- paste0("Macbook Apple ", 1:10)
+> ekran <- c(13.3, 13.3, 13.3, 16, 16, 16, 14, 14, 15.4, 15.4)
+> pamiec_RAM <- c(8, 8, 8, 16, 16, 16, 8, 8, 16, 16)
+> dysk <- c(256, 512, 1000, 512, 1000, 2000, 256, 512, 512, 1000)
+> cena <- c(7000, 9000, 11000, 12000, 14000, 16000, 9000, 10000, 13000, 15000)
+> liczba_opinii <- c(100, 150, 200, 300, 250, 400, 50, 80, 120, 180)
+> Macbooki <- data.frame(nazwa, ekran, pamiec_RAM, dysk, cena, liczba_opinii)
+> srednia_cena <- mean(Macbooki$cena)
+> cat("Średnia cena Macbooków wynosi:", srednia_cena, "zł\n")
+Średnia cena Macbooków wynosi: 11600 zł
+> nowy_macbook <- data.frame(nazwa = "Macbook Pro M1X", ekran = "16 cali", pamiec_RAM = "16 GB", dysk = "1 TB", cena = 9999, liczba_opinii = 0)
+> Macbooki <- rbind(Macbooki, nowy_macbook)
+> srednia_cena <- mean(Macbooki$cena)
+> srednia_cena
+[1] 11454.45
+> Macbooki$ocena_klientow <- factor(rep(seq(0, 5, 0.5), length.out = nrow(Macbooki)), labels = seq(0, 5, 0.5))
+> 
+> srednie_ceny <- aggregate(cena ~ ocena_klientow, data = Macbooki, FUN = mean)
+> srednie_ceny
+   ocena_klientow  cena
+1               0  7000
+2             0.5  9000
+3               1 11000
+4             1.5 12000
+5               2 14000
+6             2.5 16000
+7               3  9000
+8             3.5 10000
+9               4 13000
+10            4.5 15000
+11              5  9999
+> nowe_wiersze <- data.frame(nazwa = c("Macbook Air 2022", "Macbook Pro 16' 2022", "Macbook Pro 14' 2022", "Macbook Pro M1X"),
++                            ekran = c("13.3'", "16'", "14'", "16'"),
++                            pamiec_ram = c("8 GB", "16 GB", "32 GB", "64 GB"),
++                            dysk = c("512 GB", "1 TB", "2 TB", "4 TB"),
++                            cena = c(7499, 10999, 14999, 24999),
++                            liczba_opinii = c(20, 10, 30, 5))
+> 
+> Macbooki <- rbind(Macbooki, nowe_wiersze)
+Error in rbind(deparse.level, ...) :  引数の列の数が一致しません 
+> nowe_wiersze <- data.frame(nazwa = c("Macbook Air 2022", "Macbook Pro 16' 2022", "Macbook Pro 14' 2022", "Macbook Pro M1X"),
++                            ekran = c("13.3'", "16'", "14'", "16'"),
++                            pamiec_ram = c("8 GB", "16 GB", "32 GB", "64 GB"),
++                            dysk = c("512 GB", "1 TB", "2 TB", "4 TB"),
++                            cena = c(7499, 10999, 14999, 24999),
++                            liczba_opinii = c(20, 10, 30, 5))
+> Macbooki <- rbind(Macbooki, nowe_wiersze)
+Error in rbind(deparse.level, ...) :  引数の列の数が一致しません 
+> library(ggplot2)
+Error in library(ggplot2) : 
+   ‘ggplot2’ という名前のパッケージはありません 
+> library(ggplot2)
+Error in library(ggplot2) : 
+   ‘ggplot2’ という名前のパッケージはありません 
+> View(Macbooki)
+> nowe_macbooki <- data.frame(nazwa = c("Macbook Air", "Macbook Pro", "Macbook Pro 16", "Macbook Pro M1"),
++                             ekran = c("13,3\"", "13,3\"", "16\"", "13,3\""),
++                             pamiec_ram = c("8 GB", "16 GB", "16 GB", "8 GB"),
++                             dysk = c("512 GB", "1 TB", "512 GB", "512 GB"),
++                             cena = c(9999, 12999, 18999, 10999),
++                             liczba_opinii = c(20, 25, 10, 15),
++                             ocena_klientow = c(4.5, 5, 3, 3.5))
+> 
+> nowe_macbooki
+           nazwa ekran pamiec_ram   dysk  cena liczba_opinii ocena_klientow
+1    Macbook Air 13,3"       8 GB 512 GB  9999            20            4.5
+2    Macbook Pro 13,3"      16 GB   1 TB 12999            25            5.0
+3 Macbook Pro 16   16"      16 GB 512 GB 18999            10            3.0
+4 Macbook Pro M1 13,3"       8 GB 512 GB 10999            15            3.5
+> Macbooki <- rbind(Macbooki, nowe_macbooki)
+Error in match.names(clabs, names(xi)) :  名前が以前の名前と一致しません 
+> > nowe_macbooki <- data.frame(nazwa = c("Macbook Air", "Macbook Pro", "Macbook Pro 16", "Macbook Pro M1"),
+Error: unexpected '>' in ">"
+> > nowe_macbooki <- data.frame(nazwa = c("Macbook Air", "Macbook Pro", "Macbook Pro 16", "Macbook Pro M1"),
+Error: unexpected '>' in ">"
+> > nowe_macbooki <- data.frame(nazwa = c("Macbook Air", "Macbook Pro", "Macbook Pro 16", "Macbook Pro M1"),
+Error: unexpected '>' in ">"
+> nowe_macbooki <- data.frame(nazwa = c("Macbook Air", "Macbook Pro", "Macbook Pro 16", "Macbook Pro M1"),
++                             ekran = c("13,3\"", "13,3\"", "16\"", "13,3\""),
++                             pamiec_RAM = c("8 GB", "16 GB", "16 GB", "8 GB"),
++                             dysk = c("512 GB", "1 TB", "512 GB", "512 GB"),
++                             cena = c(9999, 12999, 18999, 10999),
++                             liczba_opinii = c(20, 25, 10, 15),
++                             ocena_klientow = c(4.5, 4, 5, 3.5))
+> Macbooki <- rbind(Macbooki, nowe_macbooki)
+> summary(Macbooki)
+    nazwa              ekran            pamiec_RAM            dysk                cena       liczba_opinii   ocena_klientow
+ Length:15          Length:15          Length:15          Length:15          Min.   : 7000   Min.   :  0.0   3.5    :2     
+ Class :character   Class :character   Class :character   Class :character   1st Qu.: 9999   1st Qu.: 22.5   4      :2     
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :11000   Median :100.0   4.5    :2     
+                                                                             Mean   :11933   Mean   :126.7   5      :2     
+                                                                             3rd Qu.:13500   3rd Qu.:190.0   0      :1     
+                                                                             Max.   :18999   Max.   :400.0   0.5    :1     
+                                                                                                             (Other):5     
+> library(ggplot2)
+Error in library(ggplot2) : 
+   ‘ggplot2’ という名前のパッケージはありません 
+> install.packages("ggplot2")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+ パッケージを ‘C:/Users/pepsi/AppData/Local/R/win-library/4.2’ 中にインストールします 
+ (‘lib’ が指定されていないため) 
+ 依存対象 (dependency) ‘colorspace’, ‘utf8’, ‘farver’, ‘labeling’, ‘munsell’, ‘R6’, ‘RColorBrewer’, ‘viridisLite’, ‘fansi’, ‘magrittr’, ‘pillar’, ‘pkgconfig’, ‘isoband’, ‘scales’, ‘tibble’, ‘vctrs’, ‘withr’ もインストールします 
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/colorspace_2.1-0.zip'
+Content type 'application/zip' length 2628929 bytes (2.5 MB)
+downloaded 2.5 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/utf8_1.2.3.zip'
+Content type 'application/zip' length 149911 bytes (146 KB)
+downloaded 146 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/farver_2.1.1.zip'
+Content type 'application/zip' length 1513214 bytes (1.4 MB)
+downloaded 1.4 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/labeling_0.4.2.zip'
+Content type 'application/zip' length 62511 bytes (61 KB)
+downloaded 61 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/munsell_0.5.0.zip'
+Content type 'application/zip' length 244725 bytes (238 KB)
+downloaded 238 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/R6_2.5.1.zip'
+Content type 'application/zip' length 84293 bytes (82 KB)
+downloaded 82 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/RColorBrewer_1.1-3.zip'
+Content type 'application/zip' length 55837 bytes (54 KB)
+downloaded 54 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/viridisLite_0.4.1.zip'
+Content type 'application/zip' length 1300058 bytes (1.2 MB)
+downloaded 1.2 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/fansi_1.0.4.zip'
+Content type 'application/zip' length 313462 bytes (306 KB)
+downloaded 306 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/magrittr_2.0.3.zip'
+Content type 'application/zip' length 227302 bytes (221 KB)
+downloaded 221 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/pillar_1.9.0.zip'
+Content type 'application/zip' length 659239 bytes (643 KB)
+downloaded 643 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/pkgconfig_2.0.3.zip'
+Content type 'application/zip' length 22374 bytes (21 KB)
+downloaded 21 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/isoband_0.2.7.zip'
+Content type 'application/zip' length 1960660 bytes (1.9 MB)
+downloaded 1.9 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/scales_1.2.1.zip'
+Content type 'application/zip' length 616412 bytes (601 KB)
+downloaded 601 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/tibble_3.2.1.zip'
+Content type 'application/zip' length 689885 bytes (673 KB)
+downloaded 673 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/vctrs_0.6.1.zip'
+Content type 'application/zip' length 1337312 bytes (1.3 MB)
+downloaded 1.3 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/withr_2.5.0.zip'
+Content type 'application/zip' length 232032 bytes (226 KB)
+downloaded 226 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/ggplot2_3.4.1.zip'
+Content type 'application/zip' length 4226623 bytes (4.0 MB)
+downloaded 4.0 MB
+
+ パッケージ ‘colorspace’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘utf8’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘farver’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘labeling’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘munsell’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘R6’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘RColorBrewer’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘viridisLite’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘fansi’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘magrittr’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘pillar’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘pkgconfig’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘isoband’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘scales’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘tibble’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘vctrs’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘withr’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘ggplot2’ は無事に展開され、MD5 サムもチェックされました 
+
+ ダウンロードされたパッケージは、以下にあります 
+ 	C:\Users\pepsi\AppData\Local\Temp\RtmpsZObPT\downloaded_packages 
+> library(ggplot2)
+> ggplot(Macbooki, aes(x = as.factor(ocena_klientow))) + 
++     geom_bar(fill = "blue") + 
++     xlab("Ocena klientów") + 
++     ylab("Liczba produktów") + 
++     ggtitle("Liczba produktów w zależności od oceny klientów")
+> ggplot(Macbooki, aes(x = as.factor(ocena_klientow))) + 
++     geom_bar(fill = "red") + 
++     xlab("Ocena klientów") + 
++     ylab("Liczba produktów") + 
++     ggtitle("Liczba produktów w zależności od oceny klientów")
+> smartfony <- read.csv("smartfony.csv", header = TRUE)
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'smartfony.csv': No such file or directory
+> install.packages("dplyr")
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+ パッケージを ‘C:/Users/pepsi/AppData/Local/R/win-library/4.2’ 中にインストールします 
+ (‘lib’ が指定されていないため) 
+ 依存対象 (dependency) ‘generics’, ‘tidyselect’ もインストールします 
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/generics_0.1.3.zip'
+Content type 'application/zip' length 80423 bytes (78 KB)
+downloaded 78 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/tidyselect_1.2.0.zip'
+Content type 'application/zip' length 224197 bytes (218 KB)
+downloaded 218 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.2/dplyr_1.1.1.zip'
+Content type 'application/zip' length 1554120 bytes (1.5 MB)
+downloaded 1.5 MB
+
+ パッケージ ‘generics’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘tidyselect’ は無事に展開され、MD5 サムもチェックされました 
+ パッケージ ‘dplyr’ は無事に展開され、MD5 サムもチェックされました 
+
+ ダウンロードされたパッケージは、以下にあります 
+ 	C:\Users\pepsi\AppData\Local\Temp\RtmpsZObPT\downloaded_packages 
+> oceny <- as.factor(Macbooki$ocena_klientow) # zamiana na factor
+> oceny_prop <- prop.table(table(oceny)) * 100 # procentowy udział każdej oceny
+> labels <- paste(names(oceny_prop), "(", round(oceny_prop, 2), "%)") # etykiety z procentami
+> pie(oceny_prop, labels = labels, col = rainbow(length(oceny_prop))) # wykres kołowy
+> library(ggplot2)
+> library(dplyr)
+
+ 次のパッケージを付け加えます: ‘dplyr’ 
+
+ 以下のオブジェクトは ‘package:ggplot2’ からマスクされています:
+
+    vars
+
+ 以下のオブジェクトは ‘package:gridExtra’ からマスクされています:
+
+    combine
+
+ 以下のオブジェクトは ‘package:stats’ からマスクされています:
+
+    filter, lag
+
+ 以下のオブジェクトは ‘package:base’ からマスクされています:
+
+    intersect, setdiff, setequal, union
+
+> library(dplyr)
+> macbooki %>%
++     group_by(ocena_klientow) %>%
++     summarize(count = n()) %>%
++     mutate(percent = count / sum(count) * 100) %>%
++     ggplot(aes(x = "", y = percent, fill = ocena_klientow)) +
++     geom_bar(width = 1, stat = "identity", color = "white") +
++     coord_polar(theta = "y") +
++     scale_fill_brewer(palette = "Dark2") +
++     theme_void() +
++     theme(legend.position = "bottom") +
++     labs(fill = "Ocena klientów")
+Error in group_by(., ocena_klientow) : object 'macbooki' not found
+> Macbooki %>%
++     group_by(ocena_klientow) %>%
++     summarize(count = n()) %>%
++     mutate(percent = count / sum(count) * 100) %>%
++     ggplot(aes(x = "", y = percent, fill = ocena_klientow)) +
++     geom_bar(width = 1, stat = "identity", color = "white") +
++     coord_polar(theta = "y") +
++     scale_fill_brewer(palette = "Dark2") +
++     theme_void() +
++     theme(legend.position = "bottom") +
++     labs(fill = "Ocena klientów")
+Warning message:
+In RColorBrewer::brewer.pal(n, pal) :
+  n too large, allowed maximum for palette Dark2 is 8
+Returning the palette you asked for with that many colors
+
+> Macbooki <- macbooki %>%
++     mutate(status_opinii = case_when(
++         liczba_opinii == 0 ~ "nie ma",
++         liczba_opinii < 50 ~ "mniej 50 opinii",
++         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++         liczba_opinii > 100 ~ "więcej 100 opinii"
++     ))
+Error in mutate(., status_opinii = case_when(liczba_opinii == 0 ~ "nie ma",  : 
+  object 'macbooki' not found
+> Macbooki <- macbooki %>%
++     mutate(status_opinii = case_when(
++         liczba_opinii == 0 ~ "nie ma",
++         liczba_opinii < 50 ~ "mniej 50 opinii",
++         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++         liczba_opinii > 100 ~ "więcej 100 opinii"
++     ))
+Error in mutate(., status_opinii = case_when(liczba_opinii == 0 ~ "nie ma",  : 
+  object 'macbooki' not found
+> macbooki <- Macbooki %>%
++ +     mutate(status_opinii = case_when(
++ +         liczba_opinii == 0 ~ "nie ma",
++ +         liczba_opinii < 50 ~ "mniej 50 opinii",
++ +         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++ +         liczba_opinii > 100 ~ "więcej 100 opinii"
++ +     ))
+Error: unexpected ')' in:
+"+         liczba_opinii > 100 ~ "więcej 100 opinii"
++     )"
+> macbooki <- Macbooki %>%
++ +     mutate(status_opinii = case_when(
++ +         liczba_opinii == 0 ~ "nie ma",
++ +         liczba_opinii < 50 ~ "mniej 50 opinii",
++ +         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++ +         liczba_opinii > 100 ~ "więcej 100 opinii"
++ +     ))
+Error: unexpected ')' in:
+"+         liczba_opinii > 100 ~ "więcej 100 opinii"
++     )"
+> macbooki <- Macbooki %>%
++ +     mutate(status_opinii = case_when(
++ +         liczba_opinii == 0 ~ "nie ma",
++ +         liczba_opinii < 50 ~ "mniej 50 opinii",
++ +         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++ +         liczba_opinii > 100 ~ "więcej 100 opinii",
++ +     ))
+Error: unexpected ')' in:
+"+         liczba_opinii > 100 ~ "więcej 100 opinii",
++     )"
+> macbooki <- Macbooki %>%
++ +     mutate(status_opinii = case_when(
++ +         liczba_opinii == 0 ~ "nie ma",
++ +         liczba_opinii < 50 ~ "mniej 50 opinii",
++ +         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++ +         liczba_opinii > 100 ~ "więcej 100 opinii",
++ +     )
+Error: unexpected ')' in:
+"+         liczba_opinii > 100 ~ "więcej 100 opinii",
++     )"
+> macbooki <- Macbooki %>%
++ +     mutate(status_opinii = case_when(
++ +         liczba_opinii == 0 ~ "nie ma",
++ +         liczba_opinii < 50 ~ "mniej 50 opinii",
++ +         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++ +         liczba_opinii > 100 ~ "więcej 100 opinii")
++ 
++ 
++ 
++ 
++ )
+Error in UseMethod("mutate") : 
+  no applicable method for 'mutate' applied to an object of class "character"
+> macbooki <- Macbooki %>%
++     mutate(status_opinii = case_when(
++         liczba_opinii == 0 ~ "nie ma",
++         liczba_opinii < 50 ~ "mniej 50 opinii",
++         liczba_opinii >= 50 & liczba_opinii <= 100 ~ "50-100 opinii",
++         liczba_opinii > 100 ~ "więcej 100 opinii"
++     ))
+> macbooki$status_opinii <- as.factor(macbooki$status_opinii)
+> library(ggplot2)
+> ggplot(macbooki, aes(x="", fill=status_opinii)) + 
++     geom_bar(width = 1, color = "white") + 
++     coord_polar("y", start=0) +
++     scale_fill_brewer(palette="Set1") +
++     labs(title="Procentowy udział Macbooków o konkretnym statusie opinii") +
++     theme_void()
+> for(i in 1:nrow(macbooki)) {
++     print(paste(macbooki$nazwa[i], "ma ocenę klientów", macbooki$ocena_klientow[i], "bo ma liczbę opinii", macbooki$liczba_opinii[i]))
++ }
+[1] "Macbook Apple 1 ma ocenę klientów 0 bo ma liczbę opinii 100"
+[1] "Macbook Apple 2 ma ocenę klientów 0.5 bo ma liczbę opinii 150"
+[1] "Macbook Apple 3 ma ocenę klientów 1 bo ma liczbę opinii 200"
+[1] "Macbook Apple 4 ma ocenę klientów 1.5 bo ma liczbę opinii 300"
+[1] "Macbook Apple 5 ma ocenę klientów 2 bo ma liczbę opinii 250"
+[1] "Macbook Apple 6 ma ocenę klientów 2.5 bo ma liczbę opinii 400"
+[1] "Macbook Apple 7 ma ocenę klientów 3 bo ma liczbę opinii 50"
+[1] "Macbook Apple 8 ma ocenę klientów 3.5 bo ma liczbę opinii 80"
+[1] "Macbook Apple 9 ma ocenę klientów 4 bo ma liczbę opinii 120"
+[1] "Macbook Apple 10 ma ocenę klientów 4.5 bo ma liczbę opinii 180"
+[1] "Macbook Pro M1X ma ocenę klientów 5 bo ma liczbę opinii 0"
+[1] "Macbook Air ma ocenę klientów 4.5 bo ma liczbę opinii 20"
+[1] "Macbook Pro ma ocenę klientów 4 bo ma liczbę opinii 25"
+[1] "Macbook Pro 16 ma ocenę klientów 5 bo ma liczbę opinii 10"
+[1] "Macbook Pro M1 ma ocenę klientów 3.5 bo ma liczbę opinii 15"
