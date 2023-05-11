@@ -1,0 +1,16 @@
+nazwa,ekran,pamiec_RAM,dysk,cena,liczba_opinii,ocena_klientow
+Macbook Apple 1,13,8,256,7000,100,1
+Macbook Apple 2,13,8,512,9000,150,4
+Macbook Apple 3,13,8,1000,11000,200,1.5
+Macbook Apple 4,16,16,512,12000,300,1.5
+Macbook Apple 5,16,16,1000,14000,250,3
+Macbook Apple 6,16,16,2000,16000,400,5
+Macbook Apple 7,14,8,256,9000,50,3.5
+Macbook Apple 8,14,8,512,10000,80,3.5
+Macbook Apple 8,14,8,512,10000,80,3.5
+Macbook Apple 10,15,16,1000,15000,180,4.5
+Macbook Pro M1X,16,16,1024,9999,1,5
+Macbook Air,13,8,512,9999,20,4.5
+Macbook Pro,13,16,1,12999,25,4.5
+Macbook Pro 16,16,16,512,18999,10,5
+Macbook Pro M1,13,8,512,10999,15,3.5

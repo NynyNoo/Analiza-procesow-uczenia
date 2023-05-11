@@ -1,0 +1,85 @@
+> library(MASS)
+> library(caret)
+Ładowanie wymaganego pakietu: ggplot2
+Ładowanie wymaganego pakietu: lattice
+> library("C50")
+> setwd("D:/MGR/APU/lab4")
+> # split database for train and test
+> file_data <- read.csv("macbooki.csv")
+> 
+> train_data_precent <- (0.7)
+> ind <- createDataPartition(file_data$ocena_klientow, p = train_data_precent, list = FALSE)
+> train_data <- file_data[ind,]
+> test_data <- file_data[-ind,]
+> 
+> # convert outcome variable to factor
+> train_data$ocena_klientow <- as.factor(train_data$ocena_klientow)
+> test_data$ocena_klientow <- as.factor(test_data$ocena_klientow)
+> 
+> oneTree <- C5.0(formula = ocena_klientow ~ ., data = train_data)
+> summary(oneTree)
+
+Call:
+C5.0.formula(formula = ocena_klientow ~ ., data = train_data)
+
+
+C5.0 [Release 2.07 GPL Edition]  	Thu May 11 21:47:43 2023
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 12 cases (7 attributes) from undefined.data
+
+Decision tree:
+
+nazwa = Macbook Apple 1: 1 (1)
+nazwa = Macbook Apple 2: 4 (1)
+nazwa = Macbook Apple 3: 1.5 (1)
+nazwa = Macbook Apple 5: 3 (1)
+nazwa in {Macbook Apple 6,Macbook Pro M1X,Macbook Pro 16}: 5 (3)
+nazwa in {Macbook Apple 8,Macbook Pro M1}: 3.5 (3)
+nazwa in {Macbook Apple 10,Macbook Air}: 4.5 (2)
+
+
+Evaluation on training data (12 cases):
+
+	    Decision Tree   
+	  ----------------  
+	  Size      Errors  
+
+	     7    0( 0.0%)   <<
+
+
+	   (a)   (b)   (c)   (d)   (e)   (f)   (g)    <-classified as
+	  ----  ----  ----  ----  ----  ----  ----
+	     1                                        (a): class 1
+	           1                                  (b): class 1.5
+	                 1                            (c): class 3
+	                       3                      (d): class 3.5
+	                             1                (e): class 4
+	                                   2          (f): class 4.5
+	                                         3    (g): class 5
+
+
+	Attribute usage:
+
+	100.00%	nazwa
+
+
+Time: 0.0 secs
+
+> plot(oneTree)
+Warning messages:
+1: In partysplit(varid = as.integer(i), breaks = as.numeric(j[1]),  :
+  NAs introduced by coercion
+2: In .bincode(as.numeric(x), breaks = unique(c(-Inf, breaks_split(split),  :
+  NAs introduced by coercion
+> 
+> # set factor levels in test data to be the same as in train data
+> test_data$nazwa <- factor(test_data$nazwa, levels = levels(train_data$nazwa))
+> 
+> bstTreePred <- predict(oneTree, test_data)
+> postResample(bstTreePred, test_data$ocena_klientow)
+ Accuracy     Kappa 
+0.3333333 0.0000000 
+> 
