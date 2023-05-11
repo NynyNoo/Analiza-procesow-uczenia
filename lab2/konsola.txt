@@ -1,0 +1,140 @@
+
+R version 4.3.0 (2023-04-21 ucrt) -- "Already Tomorrow"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(ahp)
+> library(data.tree)
+> treeAhp <- Load("MacBooki.ahp")
+> print(treeAhp, filterFun = isNotLeaf)
+                levelName
+1 Choose the best MacBook
+2  ¦--wydajnosc          
+3  ¦--jakosc             
+4  ¦--styl               
+5  °--cena               
+> Calculate(treeAhp)
+> print(treeAhp, priority = function(x) x$parent$priority["Total", x$name])
+                    levelName    priority
+1  Choose the best MacBook             NA
+2   ¦--wydajnosc              0.481821993
+3   ¦   ¦--MacBook Air 2      0.375913118
+4   ¦   ¦--MacBook Pro        0.236810425
+5   ¦   ¦--MacBook Air        0.149181220
+6   ¦   ¦--MacBook Pro (2019) 0.093978279
+7   ¦   ¦--MacBook (2017)     0.059202606
+8   ¦   ¦--MacBook Air (2017) 0.037295305
+9   ¦   ¦--MacBook Air 13 M1  0.023494570
+10  ¦   ¦--MacBook Pro 13     0.014800652
+11  ¦   °--MacBook Air 13 I5  0.009323826
+12  ¦--jakosc                 0.364516542
+13  ¦   ¦--MacBook Air 2      0.111111111
+14  ¦   ¦--MacBook Pro        0.111111111
+15  ¦   ¦--MacBook Air        0.111111111
+16  ¦   ¦--MacBook Pro (2019) 0.111111111
+17  ¦   ¦--MacBook (2017)     0.111111111
+18  ¦   ¦--MacBook Air (2017) 0.111111111
+19  ¦   ¦--MacBook Air 13 M1  0.111111111
+20  ¦   ¦--MacBook Pro 13     0.111111111
+21  ¦   °--MacBook Air 13 I5  0.111111111
+22  ¦--styl                   0.106143974
+23  ¦   ¦--MacBook Air 2      0.435942736
+24  ¦   ¦--MacBook Pro        0.247537945
+25  ¦   ¦--MacBook Air        0.140557530
+26  ¦   ¦--MacBook Pro (2019) 0.079538840
+27  ¦   ¦--MacBook (2017)     0.044634152
+28  ¦   ¦--MacBook Air (2017) 0.025166530
+29  ¦   ¦--MacBook Air 13 M1  0.014146723
+30  ¦   ¦--MacBook Pro 13     0.007957244
+31  ¦   °--MacBook Air 13 I5  0.004518300
+32  °--cena                   0.047517490
+33      ¦--MacBook Air 2      0.111111111
+34      ¦--MacBook Pro        0.111111111
+35      ¦--MacBook Air        0.111111111
+36      ¦--MacBook Pro (2019) 0.111111111
+37      ¦--MacBook (2017)     0.111111111
+38      ¦--MacBook Air (2017) 0.111111111
+39      ¦--MacBook Air 13 M1  0.111111111
+40      ¦--MacBook Pro 13     0.111111111
+41      °--MacBook Air 13 I5  0.111111111
+> 
+> Visualize(treeAhp)
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+[1] "Node$fieldsAll will be deprecated in the next release. Please use Node$attributesAll instead."
+[1] "Node$fields will be deprecated in the next release. Please use Node$attributes instead."
+> Analyze(treeAhp)
+                          Weight MacBook Air 2 MacBook Pro MacBook Air
+1 Choose the best MacBook 100.0%         27.3%       18.6%       13.3%
+2  ¦--wydajnosc            48.2%         18.1%       11.4%        7.2%
+3  ¦--jakosc               36.5%          4.1%        4.1%        4.1%
+4  ¦--styl                 10.6%          4.6%        2.6%        1.5%
+5  °--cena                  4.8%          0.5%        0.5%        0.5%
+  MacBook Pro (2019) MacBook (2017) MacBook Air (2017) MacBook Air 13 M1
+1              10.0%           7.9%               6.6%              5.9%
+2               4.5%           2.9%               1.8%              1.1%
+3               4.1%           4.1%               4.1%              4.1%
+4               0.8%           0.5%               0.3%              0.2%
+5               0.5%           0.5%               0.5%              0.5%
+  MacBook Pro 13 MacBook Air 13 I5 Inconsistency
+1           5.4%              5.1%         16.2%
+2           0.7%              0.4%         45.5%
+3           4.1%              4.1%        926.7%
+4           0.1%              0.0%         76.7%
+5           0.5%              0.5%       7850.9%
+> AnalyzeTable(treeAhp)
+> treeAhp <- Load("MacBooki.ahp")

@@ -1,0 +1,99 @@
+Version: 2.0
+Alternatives: &alternatives
+ MacBook Air 2:
+  ekran: 18
+  pamięć_RAM: 8
+  dysk: 256
+  cena: 4299
+  ocena: 4.8
+  liczba_ocen: 25
+ MacBook Pro:
+  ekran: 15
+  pamięć_RAM: 8
+  dysk: 256
+  cena: 6299
+  ocena: 4.6
+  liczba_ocen: 293
+ MacBook Air:
+  ekran: 13
+  pamięć_RAM: 8
+  dysk: 128
+  cena: 4899
+  ocena: 4
+  liczba_ocen: 11
+ MacBook Pro (2019):
+  ekran: 13.3
+  pamięć_RAM: 8
+  dysk: 128
+  cena: 7099
+  ocena: 5
+  liczba_ocen: 1
+ MacBook (2017):
+  ekran: 12
+  pamięć_RAM: 8
+  dysk: 256 
+  cena: 5999
+  ocena: 4
+  liczba_ocen: 1
+ MacBook Air (2017):
+  ekran: 13.3
+  pamięć_RAM: 8
+  dysk: 128
+  cena: 3999
+  ocena: 4.8
+  liczba_ocen: 83
+ MacBook Air 13 M1:
+  ekran: 15.5
+  pamięć_RAM: 8
+  dysk: 512
+  cena: 6699
+  ocena: 4.3
+  liczba_ocen: 43
+ MacBook Pro 13:
+  ekran: 14.4
+  pamięć_RAM: 8
+  dysk: 256
+  cena: 7599
+  ocena: 4.5
+  liczba_ocen: 5
+ MacBook Air 13 I5:
+  ekran: 23
+  pamięć_RAM: 8
+  dysk: 512
+  cena: 6799
+  ocena: 4.1
+  liczba_ocen: 11
+Goal:
+  name: Choose the best MacBook
+  preferences:
+    pairwise:
+      - [wydajnosc, jakosc, 1]
+      - [wydajnosc, styl, 9]
+      - [wydajnosc, cena, 7]
+      - [jakosc, styl, 5]
+      - [jakosc, cena, 5]
+      - [styl, cena, 5]    
+  children: 
+    wydajnosc:
+      preferences:
+        pairwiseFunction:
+          function(a1, a2) max(a1$pamięć_RAM, a2$pamięć_RAM)
+      children: *alternatives
+    jakosc:
+      preferences:
+        pairwiseFunction:
+          function(a1, a2) max(a1$dysk, a2$dysk)
+      children: *alternatives
+    styl:
+      preferences:
+        pairwiseFunction:
+          function(a1, a2) max(a1$ekran, a2$ekran)
+      children: *alternatives
+    cena:
+      preferences:
+        pairwiseFunction:
+          function(a1, a2) min(a1$cena, a2$cena)
+      children: *alternatives 
+#
+# End of Goal Section
+#####################################
