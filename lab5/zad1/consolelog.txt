@@ -1,0 +1,61 @@
+R version 4.3.0 (2023-04-21 ucrt) -- "Already Tomorrow"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(rpart)
+> 
+> data(infert)
+> 
+> summary(infert)
+   education        age            parity         induced      
+ 0-5yrs : 12   Min.   :21.00   Min.   :1.000   Min.   :0.0000  
+ 6-11yrs:120   1st Qu.:28.00   1st Qu.:1.000   1st Qu.:0.0000  
+ 12+ yrs:116   Median :31.00   Median :2.000   Median :0.0000  
+               Mean   :31.50   Mean   :2.093   Mean   :0.5726  
+               3rd Qu.:35.25   3rd Qu.:3.000   3rd Qu.:1.0000  
+               Max.   :44.00   Max.   :6.000   Max.   :2.0000  
+      case         spontaneous        stratum     
+ Min.   :0.0000   Min.   :0.0000   Min.   : 1.00  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:21.00  
+ Median :0.0000   Median :0.0000   Median :42.00  
+ Mean   :0.3347   Mean   :0.5766   Mean   :41.87  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:62.25  
+ Max.   :1.0000   Max.   :2.0000   Max.   :83.00  
+ pooled.stratum 
+ Min.   : 1.00  
+ 1st Qu.:19.00  
+ Median :36.00  
+ Mean   :33.58  
+ 3rd Qu.:48.25  
+ Max.   :63.00  
+> 
+> set.seed(123)
+> train_indices <- sample(1:nrow(infert), nrow(infert) * 0.7)
+> train <- infert[train_indices, ]
+> test <- infert[-train_indices, ]
+> 
+> model <- rpart(case~., data=train, method="class")
+> 
+> plot(model)
+> text(model)
+> 
+> predictions <- predict(model, newdata=test, type="class")
+> 
+> table(predictions, test$case)
+           
+predictions  0  1
+          0 42 13
+          1 10 10
+> 
